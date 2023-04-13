@@ -1,0 +1,151 @@
+{% extends 'OBJusers/base.html' %} {% block title %}Teams Page{% endblock %} 
+{% block content %} 
+{% load static %}
+
+ <br>
+<br>
+<img src="{% static '3.png' %}" height="350" width="1300">
+<div class="container">
+  <div class="row">    
+      {% for member in teams %}
+        {% if member.team.team_name == "Apex" %}
+          <div class="card mt-3" style="width: 18rem;">
+            {% if member.role == "Support" %}
+            <img class="card-img-top" src="{% static 'SupportApex.gif' %}" alt="Card image cap">
+            {% elif member.role == "Fragger" %}
+            <img class="card-img-top" src="{% static 'FraggerApex.gif' %}" alt="Card image cap">
+            {% elif member.role == "Recon" %}
+            <img class="card-img-top" src="{% static 'ReconApex.gif' %}" alt="Card image cap">
+            {% else %}
+            <img class="card-img-top" src="{% static 'OBJDark.png' %}" alt="Card image cap">
+            {% endif %}               
+            <div class="col">
+            <p><b>Member Name: </b> {{member.member}}</p>
+            <p><b>Role: </b>{{member.role}}</p>
+            <p><b>Description: </b>{{member.bio}}</p>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+  </div>
+</div>
+<br>
+<img src="{% static '2.png' %}" height="300" width="1300">
+<div class="container">
+  <div class="row">    
+      {% for member in teams %}
+        {% if member.team.team_name == "League of Legends" %}
+          <div class="card mt-3" style="width: 18rem;">
+            {% if member.role == "Support" %}
+            <img class="card-img-top" src="{% static 'SupportLOL.gif' %}" alt="Card image cap">
+            {% elif member.role == "ADC" %}
+            <img class="card-img-top" src="{% static 'ADCLOL.gif' %}" alt="Card image cap">
+            {% elif member.role == "Jungle" %}
+            <img class="card-img-top" src="{% static 'JungleLOL.gif' %}" alt="Card image cap"> 
+            {% elif member.role == "Mid" %}
+            <img class="card-img-top" src="{% static 'MidLOL.gif' %}" alt="Card image cap">
+            {% elif member.role == "Top" %}
+            <img class="card-img-top" src="{% static 'TopLOL.gif' %}" alt="Card image cap">
+            {% else %}
+            <img class="card-img-top" src="{% static 'OBJDark.png' %}" alt="Card image cap">
+            {% endif %}          
+            <div class="col">
+            <p><b>Member Name: </b> {{member.member}}</p>
+            <p><b>Role: </b>{{member.role}}</p>
+            <p><b>Description: </b>{{member.bio}}</p>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+           
+  </div>
+</div>
+
+<br>
+<img src="{% static '4.png' %}" height="300" width="1300">
+<div class="container">
+  <div class="row">    
+      {% for member in teams %}
+        {% if member.team.team_name == "Valorant" %}
+          <div class="card mt-3" style="width: 18rem;">
+            {% if member.role == "Initiator" %}
+            <img class="card-img-top" src="{% static 'chamber.gif' %}" alt="Card image cap">   
+            {% elif member.role == "Controller" %}
+            <img class="card-img-top" src="{% static 'valorant.gif' %}" alt="Card image cap">
+            {% else %}
+            <img class="card-img-top" src="{% static 'OBJDark.png' %}" alt="Card image cap">   
+            {% endif %}          
+            <div class="col">
+            <p><b>Member Name: </b> {{member.member}}</p>
+            <p><b>Role: </b>{{member.role}}</p>
+            <p><b>Description: </b>{{member.bio}}</p>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+  </div>
+</div>
+<br>
+<img src="{% static '6.jpg' %}" height="300" width="1300">
+<div class="container">
+  <div class="row">    
+      {% for member in teams %}
+        {% if member.team.team_name == "DOTA" %}
+          <div class="card mt-3" style="width: 18rem;">
+            <img class="card-img-top" src="{% static 'Dota.gif' %}" alt="Card image cap">         
+            <div class="col">
+            <p><b>Member Name: </b> {{member.member}}</p>
+            <p><b>Role: </b>{{member.role}}</p>
+            <p><b>Description: </b>{{member.bio}}</p>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+  </div>
+</div>
+<br>
+<img src="{% static '5.png' %}" height="300" width="1300">
+<div class="container">
+  <div class="row">    
+      {% for member in teams %}
+        {% if member.team.team_name == "Fall Guys" %}
+          <div class="card mt-3" style="width: 18rem;">
+            <img class="card-img-top" src="{% static 'FG.gif' %}" alt="Card image cap">         
+            <div class="col">
+            <p><b>Member Name: </b> {{member.member}}</p>
+            <p><b>Role: </b>{{member.role}}</p>
+            <p><b>Description: </b>{{member.bio}}</p>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+  </div>
+</div>
+<br>
+
+<script>
+  var xValues = ["Kills", "Deaths", "Assits",""];
+  var yValues = [7, 3, 14, 0];
+  var barColors = ["green", "red","blue"];
+  
+  new Chart("myChart", {
+    type: "bar",
+    data: {
+      labels: xValues,
+      datasets: [{
+        backgroundColor: barColors,
+        data: yValues
+      }]
+    },
+    options: {
+      legend: {display: false},
+      title: {
+        display: true,
+        text: "Game Info"
+      }
+    }
+  });
+  </script>
+
+ {% endblock %}
+

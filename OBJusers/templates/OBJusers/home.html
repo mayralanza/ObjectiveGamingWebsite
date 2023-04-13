@@ -1,0 +1,104 @@
+{% extends 'OBJusers/base.html' %} {% block title %}Home Page{% endblock %} 
+{% block content %} 
+{% load static %}
+
+<br>
+<div class="jumbotron jumbotron-fluid">
+  <img src="{% static 'OBJ GAMING.gif' %}" width="1300">
+</div>
+
+<br>
+
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <h1>Upcoming events:</h1>
+      {% for event in events %}
+        <div class="card mt-2">
+          <div class="card-header"><strong>Hosted By @{{ event.author.username }}</strong></div>
+            <div class="card-body d-flex flex-row justify-content-between">
+              <div>
+                <h5 class="card-title">{{event.event}}</h5>
+                <p>{{event.description}}</p>
+                <img src="{{ event.file.url }}" alt="img" width="500" height="500">
+              </div>
+              <div>
+                {% if user == event.author %}
+                <form method="post">
+                  {% csrf_token %}
+                  <button
+                    type="submit"
+                    class="btn btn-danger"
+                    name="event-id"
+                    value="{{event.id}}"
+                  >
+                    Delete
+                  </button>
+                </form>
+                {% endif %}
+                <br>
+                {% if user != event.author %}
+                  {% if event in following %}
+                  <form method="post">
+                    {% csrf_token %}
+                    <button
+                      type="submit"
+                      class="btn btn-danger"
+                      name="unfollow-id"
+                      value="{{event.id}}"
+                    >
+                      Unfollow
+                    </button>
+                  </form>
+
+                    {% else %}
+                    <form method="post">
+                    {% csrf_token %}
+                    <button
+                      type="submit"
+                      class="btn btn-success"
+                      name="follow-id"
+                      value="{{event.id}}"
+                    >
+                      Follow
+                    </button>
+                     </form>
+
+                  {% endif %}
+                {% endif %}
+              </div>
+            </div>
+            <div class="card-footer text-muted">{{event.created_at}}</div>
+          </div>
+          
+          <!-- <p>No events yet :(</p> -->
+      {% endfor %} 
+    </div>
+    <div class="col-6">
+      <h1>New Merch:</h1>
+      <div class="card mt-2">
+        <div class="card-header"><strong>Buy it now!</strong></div>
+        <div class="card-body d-flex flex-row justify-content-between">
+            <div>
+              <h5 class="card-title">Coolest OBJ Black Shirt</h5>
+              <p>The shirts are already on sale. Buy them before they are gone! You may customize and add a name in the back of the shirt</p>
+              <img class="card-img-top" src="{% static 'OBJ_Shirt.png' %}" alt="img" width="500" height="500">
+            </div>
+            <div>
+              <form method="event" data-toggle="popover" title="Popover title" data-content="Great choice. Thank you!">  
+                <button>
+                  Buy
+                </button>
+              </form>
+            </div>
+        </div>
+          <div class="card-footer text-muted">Price: $20.00</div>
+    </div>
+    </div>
+  </div>
+</div>
+<br>
+<h1>Game we love to play!</h1>
+<img src="{% static 'Apex.jpg' %}" height="800" width="1300">
+
+{% endblock %} 

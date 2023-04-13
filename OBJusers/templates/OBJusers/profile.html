@@ -1,0 +1,69 @@
+{% extends 'OBJusers/base.html' %} {% block title %}Profile Page{% endblock %} 
+{% load crispy_forms_tags %}{% block content %} 
+{% load static %}
+<div class="container mt-5">
+    
+    <div class="row d-flex justify-content-center">
+        
+        <div class="col-md-7">
+            
+            <div class="card p-3 py-4">
+                
+                <div class="text-center">
+                    <img src="{% static 'OBJUserDefault.png' %}" width="100" class="rounded-circle">
+                </div>
+                
+                <div class="text-center mt-3">
+                    <span class="bg-secondary p-1 px-4 rounded text-white">OBJ Member</span>
+                    <h5 class="mt-2 mb-0">{{user.username}}</h5>
+                    <span>Team player</span>
+                    <br>
+                    <span>Events Followed:  {{ events_followed_count }} </span>
+                    <div align="Left">
+                    <h2>You belong to the following teams:</h2>   
+                    {% for member in teams %}
+                        <p><b>Team Name: </b> {{member.team}}</p>
+                        <p><b>Role: </b>{{member.role}}</p>
+                        <p><b>Description: </b>{{member.bio}}</p> 
+                    {% endfor %}
+                    </div>
+                    <br>
+                    <div class="container mt-3" align="Left">
+                        <h2>Add events here:</h2> 
+                        <form action="/profile" enctype="multipart/form-data" method="POST">
+                            {% csrf_token %}
+                            <div class="mb-3 mt-3">
+                            <label for="event" class="form-label">Event:</label>
+                            <input type="event" class="form-control" id="event" placeholder="Enter event" name="event" required>
+                            </div>
+                            <div class="mb-3">
+                            <label for="desc" class="form-label">Description:</label>
+                            <input type="description" class="form-control" id="desc" placeholder="Enter password" name="desc" required>
+                            </div>
+                            <div class="mb-3">
+                                <select name="useroption" class="form-select" id="inlineFormCustomSelectPref" required>
+                                    <option selected>Choose the team that will play!</option>
+                                    {% for team in choice_teams %}
+                                    <option value= "{{ team.id }}" >{{ team.team_name }}</option>
+                                    {% endfor %} 
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="myfile" class="form-label">Attachment:</label>
+                                <input type="file" name="myfile">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                    </div>
+            </div>
+            </div>
+            
+        </div>
+        
+    </div>
+    
+</div>
+
+
+{% endblock %}
