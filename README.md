@@ -44,3 +44,13 @@ If not spelled right, or if any other roles, the app will display the default OB
 
 ## Profile Tab
 Here the user will be able to see how many events they have followed. Morever, the description about the team they belong to. Moreover, the member will be able to post new events, and upload an image flyer about it. 
+
+## API
+The website has API built with the Django REST Framework. It has been implemented the GET and POST
+
+{
+        "email": "lanza_mayra@yahoo.com",
+        "username": "Mariel",
+	       "password": "M1a2r3i4e5l6"
+}
+
