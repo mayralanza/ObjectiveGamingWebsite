@@ -1,3 +1,6 @@
+In order to run, Please download all the libraries on requirements.txt, and run the following in the command line:
+	**python manage.py runserver**
+
 # OBJECTIVE GAMING WEBSITE
  OBJ is a an esport website, where users are the members of this organization. This will be used as an scheduler event for the teams and for users to support them.
  
@@ -43,7 +46,7 @@ Valorant:
 If not spelled right, or if any other roles, the app will display the default OBJ icon.
 
 ## Profile Tab
-Here the user will be able to see how many events they have followed. Morever, the description about the team they belong to. Moreover, the member will be able to post new events, and upload an image flyer about it. 
+Here the user will be able to see how many events they have followed. Morever, the description about the team they belong to. Moreover, the member will be able to post new events, and upload an image flyer about it. **ALL FIELDS ARE REQUIRED, INCLUDING THE IMAGE to add an event**
 
 ## API
 The website has API built with the Django REST Framework. It has been implemented the GET and POST
