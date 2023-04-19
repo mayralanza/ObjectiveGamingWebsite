@@ -1,6 +1,8 @@
+## Installation
 In order to run, Please download all the libraries on requirements.txt, and run the following in the command line:
-	**python manage.py runserver**
-
+```python
+	python manage.py runserver
+```
 # OBJECTIVE GAMING WEBSITE
  OBJ is a an esport website, where users are the members of this organization. This will be used as an scheduler event for the teams and for users to support them.
  
