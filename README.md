@@ -52,10 +52,10 @@ Here the user will be able to see how many events they have followed. Morever, t
 
 ## API
 The website has API built with the Django REST Framework. It has been implemented the GET and POST
-
+```JSON
 {
         "email": "lanza_mayra@yahoo.com",
         "username": "Mariel",
 	       "password": "M1a2r3i4e5l6"
 }
-
+```
